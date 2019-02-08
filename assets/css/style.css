@@ -22,4 +22,51 @@ h3 {
   font-size: 1.8rem;
 }
 
+.top-row {
+  height: 480px;
+}
+
+.bottom-row {
+  height: 300px;
+}
+
+.container, .row, .col-4, .col-12 {
+  border: solid black 1px;
+}
+
+#word-marquee-area {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+#word-center-display {
+  border: solid black 1px;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+
+#word-big-blank-display {
+  font-size: 8rem;
+  letter-spacing: 2rem;
+}
+
+@media only screen and (max-width: 960px) {
+  #word-big-blank-display {
+    font-size: 6rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  #word-big-blank-display {
+    font-size: 4rem;
+    letter-spacing: 0.8rem;
+  }
+}
+@media only screen and (max-width: 640px) {
+  #word-big-blank-display {
+    font-size: 3.4rem;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
