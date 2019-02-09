@@ -22,6 +22,22 @@ h3 {
   font-size: 1.8rem;
 }
 
+#guesses-remaining-p {
+  letter-spacing: 1rem;
+  text-align: center;
+  font-size: 3rem;
+}
+
+#guessed-letters-display {
+  font-size: 2rem;
+}
+
+.guesses-remaining-container, .guessed-letters-container {
+  text-align: center;
+  padding: 5%;
+  height: 40%;
+}
+
 .top-row {
   height: 480px;
 }
