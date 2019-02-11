@@ -10,6 +10,7 @@ var playerLosses = 0;
 var guessesRemaining = 1;
 var guessedLetters = [];
 var correctLetters = [];
+var gameInSession = false;
 
 var bigWordDisplay = document.getElementById("word-big-blank-display");
 var guessedLettersDisplay = document.getElementById("guessed-letters-display");
@@ -25,6 +26,9 @@ function initGame() {
     getWord();
     printBlankSpaces();
     setGuessesLeft();
+    displayScore();
+    graphicalGuesses();
+    gameInSession = true;
 }
 
 function clearDisplays() {
@@ -60,11 +64,13 @@ function playerDefeated() {
     alert("Looks like you lose, loser.");
     printGoalWord();
     playerLosses++;
+    gameInSession = false;
 }
 
 function playerVictory() {
     alert("Congratulations, you win!");
     playerWins++;
+    gameInSession = false;
 }
 
 function printGoalWord() {
@@ -77,8 +83,8 @@ function printGoalWord() {
 
 function displayScore() {
     // updates the score display when called
-    document.getElementById("wins-counter").innerHTML = playerWins;
-    document.getElementById("loss-counter").innerHTML = playerLosses;
+    document.getElementById("player-win-display").innerHTML = playerWins;
+    document.getElementById("player-losses-display").innerHTML = playerLosses;
 }
 
 function getWord() {
@@ -103,6 +109,8 @@ function wrongGuess() {
         guessesRemainingP.append("I");
     }
 
+    graphicalGuesses();
+
     if (guessesRemaining < 0) {
         //Declares player defeat if last guess is used
         playerDefeated();
@@ -121,57 +129,79 @@ function catchPlayerKey(eventInput, keyUnicode) {
     }
     else
 
-    //Checks to make sure player input is a letter from A to Z
+    //Checks to make sure game isn't ended
+    if (gameInSession == true) {
 
-    { if (keyUnicode <= 90 && keyUnicode >= 65) { 
-        console.log(keyUnicode);
+        //Checks to make sure player input is a letter from A to Z
 
-        //Checks if key has not already been guessed
-        if (guessedLetters.indexOf(keyPressed) == -1) {
+        //Start of keycheck Block
+        { if (keyUnicode <= 90 && keyUnicode >= 65) { 
+            console.log(keyUnicode);
+
+            //Checks if key has not already been guessed
+            if (guessedLetters.indexOf(keyPressed) == -1) {
 
 
-        //Checks if pressed key is in goal word at least once
-        if (goalWordArray.indexOf(keyPressed) != -1 ) {
-            bigWordDisplay.innerHTML = "";
+            //Checks if pressed key is in goal word at least once
+            if (goalWordArray.indexOf(keyPressed) != -1 ) {
+                bigWordDisplay.innerHTML = "";
 
-        // If it hasn't been guessed and is in the word, places the letter in the correctLetters array
-        for (i = 0; i < goalWordArray.length; i++) {
-            if (goalWordArray[i] == keyPressed) {
-                correctLetters[i] = keyPressed;
+            // If it hasn't been guessed and is in the word, places the letter in the correctLetters array
+            for (i = 0; i < goalWordArray.length; i++) {
+                if (goalWordArray[i] == keyPressed) {
+                    correctLetters[i] = keyPressed;
+                }
+
+                //Prints out the word marquee again
+                bigWordDisplay.append(correctLetters[i]);
+
             }
 
-            //Prints out the word marquee again
-            bigWordDisplay.append(correctLetters[i]);
-
-        }
-
-        //Checks to see if the player has won
-            
-        if (correctLetters.indexOf("_") == -1) {
-            playerVictory();
-        }
-
-        //Decrements guesses remaining if letter is not in word and hasn't been guessed already
-        }  else if (goalWordArray.indexOf(keyPressed) == -1) {
-            wrongGuess();
-        } 
-
-        //Adds the letter to the array of letters guessed, prints them out
-        guessedLetters.push(keyPressed);
-        guessedLettersDisplay.innerHTML = "";
-        for (u = 0; u < guessedLetters.length; u++) {
-            guessedLettersDisplay.append(guessedLetters[u]);
-            if (guessedLetters.length > 1 && u < guessedLetters.length -1) {
-                guessedLettersDisplay.append(", ");
+            //Checks to see if the player has won
+                
+            if (correctLetters.indexOf("_") == -1) {
+                playerVictory();
             }
+
+            //Decrements guesses remaining if letter is not in word and hasn't been guessed already
+            }  else if (goalWordArray.indexOf(keyPressed) == -1) {
+                wrongGuess();
+            } 
+
+            //Adds the letter to the array of letters guessed, prints them out
+            guessedLetters.push(keyPressed);
+            guessedLettersDisplay.innerHTML = "";
+            for (u = 0; u < guessedLetters.length; u++) {
+                guessedLettersDisplay.append(guessedLetters[u]);
+                if (guessedLetters.length > 1 && u < guessedLetters.length -1) {
+                    guessedLettersDisplay.append(", ");
+                }
+            }
+
+
         }
 
+        }
+        } //end of keycheck block
+    } //end of in-game status check block
 
-    }
+else {
+    return;
+}
+} //end of catchPlayerKey function.
+;
 
+// Displays the player's remaining guesses in the form of simple little green bars
+function graphicalGuesses() {
+    var graphicalGuessDisplay = document.getElementById("guess-graphics-box");
+    graphicalGuessDisplay.innerHTML = "";
+
+    for (i = 0; i <= guessesRemaining; i++){
+        var greenGuessBar = document.createElement("div");
+        greenGuessBar.setAttribute("class", "guess-remaining-bar");
+        graphicalGuessDisplay.appendChild(greenGuessBar);
     }
 }
-};
 
 
 //Sets up the page to listen for keyups

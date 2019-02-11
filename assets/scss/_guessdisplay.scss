@@ -1,0 +1,17 @@
+.whole-box-container {
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/ron_scowl.gif");
+    //Image is Ron Swanson chararacter from Parks and Rec, credit to them for it
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-flow: column-reverse;
+}
+
+.guess-remaining-bar {
+    width: 100%;
+    height: 1 / 8 * 100%;
+    background-image: linear-gradient(#00bb00, #00ff00, #00bb00);
+    border-top: solid black 1px;
+}

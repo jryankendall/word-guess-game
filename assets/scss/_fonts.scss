@@ -4,6 +4,7 @@ html {
 
 body {
     font-family: 'Cabin', sans-serif;
+    color: #eee;
 }
 
 p {
@@ -16,6 +17,7 @@ h1 {
 
 h2 {
     font-size: 2.4rem;
+    padding: 1rem;
 }
 
 h3 {
@@ -30,10 +32,4 @@ h3 {
 
 #guessed-letters-display {
     font-size: 2rem;
-}
-
-.guesses-remaining-container, .guessed-letters-container {
-    text-align: center;
-    padding: 5%;
-    height: 40%;
 }

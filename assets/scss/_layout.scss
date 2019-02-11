@@ -1,13 +1,24 @@
+body {
+    background-image: linear-gradient(to right, #0D4782, #666677, #0D4782);
+}
+
 .top-row {
-    height: 480px;
+    height: 440px;
 }
 
 .bottom-row {
     height: 300px;
+    border-top: solid 1px black;
 }
 
-.container, .row, .col-4, .col-12 {
+.container {
     border: solid black 1px;
+    background-color: #0D4782;
+}
+
+#instructions-display {
+    padding: 0 15% 0;
+    margin: 0;
 }
 
 #word-marquee-area {
@@ -26,4 +37,57 @@
 #word-big-blank-display {
     font-size: 8rem;
     letter-spacing: 2rem;
+}
+
+.left-block {
+    text-align: center;
+}
+
+
+.guesses-remaining-container, .guessed-letters-container {
+    text-align: center;
+    padding: 5%;
+    height: 40%;
+}
+
+.half-max-height {
+    height: 50%;
+    display: flex;
+    flex-flow: column;
+}
+
+.half-max-height > p {
+    font-size: 2rem;
+    text-align: center;
+    margin: auto;
+}
+
+.left-block {
+    border-right: solid black 1px;
+}
+
+.right-block {
+    border-left: solid black 1px;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.left-top-block {
+    border-bottom: solid black 1px;
+}
+
+.bottom-footer-display {
+    position: fixed;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    background-color: #666677;
+    border-top: solid 3px #eee;
+    text-align: center;
+}
+
+.bottom-footer-display > h3 {
+    padding-top: 8px;
 }

@@ -21,18 +21,40 @@
     <div class="container">
         <div class="row top-row">
             <div class="col-12" id="word-marquee-area">
+                <div id="instructions-display">
+                    <h2>INSTRUCTIONS</h2>
+                    <p>A new game automatically begins upon first loading the page.</p>
+                    <p>Press any letter on your keyboard to guess if that letter is in the word.
+                        If it's in the word at least once, all instance of that letter will be revealed.
+                         If that letter is not in the word at all, you will lose one Wrong Guess counter. Either
+                         way, the letter will be added to the list of guessed letters, and you won't be penalized for
+                         pressing that same letter.
+                    </p>
+                    <p>If you guess an incorrect letter 8 times, you lose the current round.
+                        If you successfully guess all letters in the word before making 8 incorrect guesses
+                        you instead will win the round.
+                    </p>
+                    
+                    <h2>Press Spacebar to start a new round.</h2>
+                </div>
                 <div id="word-center-display">
                     <p id="word-big-blank-display">_ _ _ _ _ _ _ _ _ _ _</p>
                 </div>
             </div>
         </div>
         <div class="row bottom-row">
-            <div class="col-4">
-                <p>Smaller Word Display Here</p>
-                <p>Maybe Word Length in numbers</p>
+            <div class="col-4 left-block">
+                <div class="row half-max-height left-top-block">
+                    <h2>Wins</h2>
+                    <p id="player-win-display"></p>
+                </div>
+                <div class="row half-max-height">
+                    <h2>Losses</h2>
+                    <p id="player-losses-display"></p>
+                </div>
             </div>
 
-            <div class="col-4">
+            <div class="col-4 middle-block">
 
                 <div class="guessed-letters-container">
                     <h2>Guessed Thus Far</h2>
@@ -46,13 +68,20 @@
 
             </div>
 
-            <div class="col-4">
+            <div class="col-4 right-block">
+                <div class="whole-box-container" id="guess-graphics-box">
+                </div>
 
             </div>
 
         </div>
 
 
+
+    </div>
+
+    <div class="bottom-footer-display">
+        <h3>by Jed Kendall</h3>
 
     </div>
 

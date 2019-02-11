@@ -10,11 +10,43 @@
         font-size: 4rem;
         letter-spacing: 0.8rem;
     }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    #guesses-remaining-p {
+        letter-spacing: .5rem;
+    }
+    
+    #guessed-letters-display {
+        letter-spacing: 0rem;
+        line-height: 1.2rem;
+        font-size: 1.5rem;
+    }
+    
 }
 
 @media only screen and (max-width: 640px){
+
+    h2 {
+        font-size: 1.4rem;
+    }
+    
     #word-big-blank-display {
         font-size: 3.4rem;
     }
+    #guesses-remaining-p {
+        font-size: 2rem;
+    }
+    
+    #guessed-letters-display {
+        font-size: 1.6rem;
+    }
+    
 
 }
